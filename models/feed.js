@@ -2,8 +2,9 @@ var mongoose     = require('mongoose');
 var Schema       = mongoose.Schema;
 
 var FeedSchema   = new Schema({
-    title,
-    discription,
+    title : {type: String},
+    description : {type: String},
+    rssLink : {type: String},
     Entry : [{
         title : {type : String},
         link : {type : String},
