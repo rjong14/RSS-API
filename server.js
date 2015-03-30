@@ -7,6 +7,7 @@ var hresp = require('./resources/response.js');
 
 
 //Models
+var Feed = require('./models/feed.js');
 var User = require('./models/user.js');
 
 
@@ -20,7 +21,7 @@ app.set('port', (process.env.PORT || 8080));
 
 var router = express.Router();
 
-var customerRoutes = require('./routes/user_routes.js')(router, User, hresp);
+var userRoutes = require('./routes/user_routes.js')(router, User, Feed, hresp);
 
 
 //Middleware
@@ -29,7 +30,7 @@ router.use(function(req, res, next){
     next();
 });
 
-router.get('/api', function(req, res) {
+router.get('/', function(req, res) {
     res.json({ message: 'hooray! welcome to our api!' });
 });
 
@@ -37,9 +38,7 @@ router.get('/api', function(req, res) {
 
 //A prefix for the API routes
 app.use('/api', router);
-app.use(customerRoutes);
-app.use(categoryRoutes);
-app.use(employeeRoutes);
+app.use(userRoutes);
 
 app.listen(app.get('port'), function(){
     console.log('Magic happens on port ' + app.get('port'));
