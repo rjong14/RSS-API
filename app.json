@@ -1,0 +1,9 @@
+{
+  "name":"RSS-API",
+  "description":"",
+  "scripts":{
+    "postdeploy":"server.js"
+  },
+  "env":{},
+  "addons":[]
+}
