@@ -4,7 +4,7 @@ var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var hresp = require('./resources/response.js');
-
+var gfeed = require('google-feed-api');
 
 //Models
 var Feed = require('./models/feed.js');
@@ -21,7 +21,20 @@ app.set('port', (process.env.PORT || 8080));
 
 var router = express.Router();
 
+//routes
 var userRoutes = require('./routes/user_routes.js')(router, User, Feed, hresp);
+
+//test code
+var tweakfeed = new gfeed.Feed('http://tweakers.mobi/rss/nieuws');
+tweakfeed.setNumEntries(10);
+tweakfeed.load(function(result) {
+  if (!result.error) {
+       console.log(result.feed);
+    }
+  else {
+      console.log("error");
+  }
+});
 
 
 //Middleware
