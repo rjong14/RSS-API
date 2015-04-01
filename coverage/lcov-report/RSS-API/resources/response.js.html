@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for RSS-API\resources\response.js</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../prettify.css">
+    <link rel="stylesheet" href="../../base.css">
+    <style type='text/css'>
+        div.coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1>Code coverage report for <span class="entity">RSS-API\resources\response.js</span></h1>
+    <h2>
+        Statements: <span class="metric">4.76% <small>(1 / 21)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">100% <small>(0 / 0)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">0% <small>(0 / 10)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">4.76% <small>(1 / 21)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">RSS-API/resources/</a> &#187; response.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">module.exports = {
+    ErrorSaving: <span class="fstat-no" title="function not covered" >function(res, err) {</span>
+<span class="cstat-no" title="statement not covered" >        res.json({status : "ERROR", message: err});</span>
+<span class="cstat-no" title="statement not covered" >        res.send(err);</span>
+    },
+&nbsp;
+    SuccessSaving: <span class="fstat-no" title="function not covered" >function(res, data) {</span>
+<span class="cstat-no" title="statement not covered" >        res.status(201);</span>
+<span class="cstat-no" title="statement not covered" >        res.json({status : "OK", message: "Object successvol aangemaakt", data: data});</span>
+    },
+    
+    ErrorFind: <span class="fstat-no" title="function not covered" >function(res, err) {</span>
+<span class="cstat-no" title="statement not covered" >        res.json({status : "ERROR", message: "Fout bij het ophalen"});</span>
+<span class="cstat-no" title="statement not covered" >        res.send(err);</span>
+    },
+    
+    SuccessFind: <span class="fstat-no" title="function not covered" >function(res, data) {</span>
+<span class="cstat-no" title="statement not covered" >        res.status(200);</span>
+<span class="cstat-no" title="statement not covered" >        res.json({status : "OK", message: "Ophalen succesvol", data: data});</span>
+    },
+    
+    ErrorUpdate: <span class="fstat-no" title="function not covered" >function(res, err) {</span>
+<span class="cstat-no" title="statement not covered" >        res.json({status : "ERROR", message: "Fout bij updaten"});</span>
+<span class="cstat-no" title="statement not covered" >        res.send(err);</span>
+    },
+    
+    SuccessUpdate: <span class="fstat-no" title="function not covered" >function(res) {</span>
+<span class="cstat-no" title="statement not covered" >        res.status(200);</span>
+<span class="cstat-no" title="statement not covered" >        res.json({status : "OK", message: "Updaten succesvol"});</span>
+    },
+    
+    ErrorDelete: <span class="fstat-no" title="function not covered" >function(res, err) {</span>
+<span class="cstat-no" title="statement not covered" >        res.json({status : "ERROR", message: "Verwijderen niet gelukt"});</span>
+<span class="cstat-no" title="statement not covered" >        res.send(err);</span>
+    },
+    
+    SuccessDelete: <span class="fstat-no" title="function not covered" >function(res) {</span>
+<span class="cstat-no" title="statement not covered" >        res.status(200);</span>
+<span class="cstat-no" title="statement not covered" >        res.json({status : "OK", message: "Verwijderen gelukt"});</span>
+    },
+    
+    CustomMessage: <span class="fstat-no" title="function not covered" >function(res, message) {</span>
+<span class="cstat-no" title="statement not covered" >        res.status(200);</span>
+<span class="cstat-no" title="statement not covered" >        res.json({status: "OK", data: message});</span>
+    },
+    
+    Unauthorized: <span class="fstat-no" title="function not covered" >function(res) {</span>
+<span class="cstat-no" title="statement not covered" >        res.status(401);</span>
+<span class="cstat-no" title="statement not covered" >        res.json({status : "Unauthorized", message: "Geen toegang"});</span>
+    }
+    
+};</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Mar 31 2015 17:30:55 GMT+0200 (West-Europa (zomertijd))</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>
