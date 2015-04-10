@@ -29,8 +29,9 @@ var feedRoutes = require('./routes/feed_routes.js');
 //test every few minutes
 var minutes = 1, the_interval = minutes * 60 * 1000;
 setInterval(function() {
-  console.log("I am doing my 1 minutes check");
-  // do your stuff here
+    console.log("Updating feeds");
+    feed_function.updateFeeds();
+    feed_function.updateFeeds();
 }, the_interval);
 
 //Middleware
