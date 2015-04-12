@@ -19,7 +19,14 @@ module.exports = {
                     for (i = 0; i < result.feed.entries.length;  i++) {
                         //TODO: if statement maken die controlleerd
                         //of een entry bestaat
-                        if (feedsRAW.entries.indexOf(result.feed.entries[i]) > -1) {
+                        var toevoegen = false;
+                        for (j = 0; j < feedsRAW.entries.length; j++){
+                            if(feedsRAW.entries[j].publishedDate = result.feed.entries[i].publishedDate) {
+                                toevoegen = true;
+                            };
+                        };
+                        
+                        if (toevoegen == true) {
                             console.log("inserting new entry");
                             fillSpecificFeed(feedsRAW, result.feed.entries[i]);
                         } else {
@@ -54,8 +61,6 @@ module.exports = {
     
     emptyFeeds: function(){
         Feed.find(function(err, feedsRAW){
-            
-            console.log(feedsRAW[0].feedUrl);
             for (a = 0; a < feedsRAW.length; a++) {
                 while (feedsRAW[a].entries.length > 25)
                 {
