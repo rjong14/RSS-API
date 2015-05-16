@@ -5,7 +5,6 @@ module.exports = {
     updateFeeds: function() {
         Feed.find(function(err, feedsRAW){
             
-            console.log(feedsRAW[0].feedUrl);
             for (a = 0; a < feedsRAW.length; a++) {
                 fillFeed(feedsRAW[a]);
             }
@@ -16,21 +15,24 @@ module.exports = {
             thisFeed.setNumEntries(10);
             thisFeed.load(function(result) {
                 if (!thisFeed.error) {
+                    //voor elke nieuwe entry
                     for (i = 0; i < result.feed.entries.length;  i++) {
-                        //TODO: if statement maken die controlleerd
-                        //of een entry bestaat
-                        var toevoegen = false;
+                        //standaard toevoegen
+                        var toevoegen = true;
+                        //voor elke bestaande entry
                         for (j = 0; j < feedsRAW.entries.length; j++){
-                            if(feedsRAW.entries[j].publishedDate = result.feed.entries[i].publishedDate) {
-                                toevoegen = true;
+                            //controlleren of hij overeen komt met de bestaande entry
+                            if(feedsRAW.entries[j].content == result.feed.entries[i].content) {
+                                //zo ja niet toevoegen
+                                toevoegen = false;
                             };
                         };
                         
+                        //anders wel toevoegen
                         if (toevoegen == true) {
                             console.log("inserting new entry");
+                            console.log(result.feed.entries[i].title);
                             fillSpecificFeed(feedsRAW, result.feed.entries[i]);
-                        } else {
-                            console.log("double feed detected");
                         }
                     }
                 } else {
@@ -62,10 +64,19 @@ module.exports = {
     emptyFeeds: function(){
         Feed.find(function(err, feedsRAW){
             for (a = 0; a < feedsRAW.length; a++) {
-                while (feedsRAW[a].entries.length > 25)
-                {
-                    feedsRAW[a].entries.pop();
-                }
+                //feedsRAW[a].entries = undefined;
+                //this code deletes last, need to delete first
+                //while (feedsRAW[a].entries.length > 25)
+                //{
+                //    console.log("deleting");
+                //    feedsRAW[a].entries.pop();
+                //}
+                feedsRAW[a].save(function(err){
+                    if (err){
+                        console.log("error saving")
+                    }
+                    console.log('saving')
+                });
             }
         });
     }

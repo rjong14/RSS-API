@@ -27,11 +27,10 @@ var userRoutes = require('./routes/user_routes.js');
 var feedRoutes = require('./routes/feed_routes.js');
 
 //test every few minutes
-var minutes = 1, the_interval = minutes * 60 * 1000;
+var minutes = 5, the_interval = minutes * 60 * 1000;
 setInterval(function() {
-    console.log("Updating feeds");
+    //feed_function.emptyFeeds();
     feed_function.updateFeeds();
-    feed_function.emptyFeeds();
 }, the_interval);
 
 //Middleware
