@@ -4,6 +4,7 @@ var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var gfeed = require('google-feed-api');
+var cors = require('cors');
 
 //Own modules
 var hresp = require('./functions/response.js');
@@ -14,7 +15,7 @@ var Feed = require('./models/feed.js');
 var User = require('./models/user.js');
 
 mongoose.connect('mongodb://admin:admin@ds039960.mongolab.com:39960/rssdb');
-
+app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
