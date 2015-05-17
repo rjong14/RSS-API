@@ -20,7 +20,6 @@ module.exports = {
                 if (!thisFeed.error) {
                     //voor elke nieuwe entry
                     result.feed.entries.forEach(function(newEntry) {
-                        console.log(newEntry.title);
                         Entry.findOne()
                             .where('content').equals(newEntry.content)
                             .exec(function(err, entry){
