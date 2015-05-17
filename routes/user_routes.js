@@ -3,19 +3,24 @@ var router = express.Router();
 var User = require('../models/user.js');
 var Feed = require('../models/feed.js');
 var hresp = require('../functions/response.js');
+var passport = require('passport');
     
-router.post('/users', function(req, res){
-    var user = new User();
-    //TODO: uitbreiden met authenticatie
-    user.username = req.body.username;
-    
-    user.save(function(err){
-        if(err){
-            hresp.ErrorSaving(res, err);
-        } else {
-        hresp.SuccessSaving(res, user);
-        }
-    });
+router.post('/users', passport.authenticate('local-signup'), function(req, res) {
+    var newUser = new User();
+    newUser = req.user;
+    newUser.password = undefined;
+    hresp.CustomMessage(res, newUser);
+    //var user = new User();
+    ////TODO: uitbreiden met authenticatie
+    //user.username = req.body.username;
+    //
+    //user.save(function(err){
+    //    if(err){
+    //        hresp.ErrorSaving(res, err);
+    //    } else {
+    //    hresp.SuccessSaving(res, user);
+    //    }
+    //});
 });
 
 router.get('/users', function(req, res){
@@ -23,6 +28,9 @@ router.get('/users', function(req, res){
         if(err) {
             hresp.ErrorFind(res, err);
         } else {
+            for (i = 0; i< users.length; i++){
+                    users[i].password = undefined;
+                }
         hresp.SuccessFind(res, users);
         }
     });
