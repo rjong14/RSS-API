@@ -7,16 +7,7 @@ var FeedSchema   = new Schema({
     link : {type: String},
     description : {type: String},
     author : {type: String},
-    entries : [{
-        mediaGroup : {type : String},
-        title : {type : String},
-        link : {type : String},
-        content : {type : String},
-        contentSnippet : {type : String},
-        category : {type : String},
-        publishedDate : {type : Date},
-        categories : []
-    }]
+    entries : [{type: Schema.Types.ObjectId, ref: 'Entry'}]
 });
 
 module.exports = mongoose.model('Feed', FeedSchema);

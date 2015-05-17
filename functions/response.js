@@ -10,7 +10,7 @@ module.exports = {
     },
     
     ErrorFind: function(res, err) {
-        res.json({status : "ERROR", message: "Fout bij het ophalen"});
+        //res.json({status : "ERROR", message: "Fout bij het ophalen"});
         res.send(err);
     },
     
