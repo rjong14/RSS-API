@@ -45,7 +45,11 @@ router.get('/feed/:feedId/entry/:entryId', function(req, res){
         if (err){
             hresp.ErrorFind(res, err);
         }
-        hresp.SuccessFind(res, entry);
+        if(entry==null){
+            hresp.ErrorFind(res, "Object not found")
+        }else{
+            hresp.SuccessFind(res, entry);
+        }
     });
     
     //below code "where" is a everything or nothing trigger, wtf mongoose?
